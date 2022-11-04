@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+<script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.all.min.js"></script>
+<div class="card m-3" [style.width.px]="500">
+  <h5 class="card-header">Employee Details Form</h5>
+  <div class="card-body">
+    <form [formGroup]="form">
+      <div class=" col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+          <kendo-label class="k-form" text="First Name"></kendo-label>
+          <input kendo-textbox class="form-control k-input-solid"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.firstName.invalid && f.firstName.touched) && f.firstName.errors }"
+            [style.width.px]="200" [(ngModel)]="employeeDetails.firstName" formControlName="firstName">
+          <div *ngIf="f.firstName.errors && (f.firstName.invalid && f.firstName.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+          <kendo-label class="k-form" text="Last Name"></kendo-label>
+          <input kendo-textbox class="form-control k-input-solid"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.lastName.invalid && f.lastName.touched) && f.lastName.errors }"
+            [style.width.px]="200" [(ngModel)]="employeeDetails.lastName" formControlName="lastName">
+          <div *ngIf="f.lastName.errors && (f.lastName.invalid && f.lastName.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+          <kendo-label class="k-form" text="Email"></kendo-label>
+          <input kendo-textbox class="form-control k-input-solid" type="email"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.email.invalid && f.email.touched) && f.email.errors }"
+            [style.width.px]="200" [(ngModel)]="employeeDetails.email" formControlName="email">
+          <div *ngIf="f.email.errors && (f.email.invalid && f.email.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.pattern">Please, Enter valid Email Address</div>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+          <kendo-label class="k-form" text="Contact Number"></kendo-label>
+          <input kendo-textbox class="form-control k-input-solid" type="tel"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.contactNumber.invalid && f.contactNumber.touched) && f.contactNumber.errors }"
+            [style.width.px]="200" [(ngModel)]="employeeDetails.contactNumber" formControlName="contactNumber">
+          <div *ngIf="f.contactNumber.errors && (f.contactNumber.invalid && f.contactNumber.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.contactNumber.errors.required">Contact Number is required</div>
+            <div *ngIf="f.contactNumber.errors.pattern">Please, Enter 10 digit Contact Number</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+          <kendo-label class="k-form" text="Address"></kendo-label>
+          <textarea kendo-textarea class="form-control k-input-solid"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.address.invalid && f.address.touched) && f.address.errors }"
+            [style.width.px]="400" [(ngModel)]="employeeDetails.address" formControlName="address"></textarea>
+          <div *ngIf="f.address.errors && (f.address.invalid && f.address.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+          <kendo-label class="k-form" text="User Name"></kendo-label>
+          <input kendo-textbox class="form-control k-input-solid"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.userName.invalid && f.userName.touched) && f.userName.errors }"
+            [style.width.px]="200" [(ngModel)]="employeeDetails.userName" formControlName="userName">
+          <div *ngIf="f.userName.errors && (f.userName.invalid && f.userName.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.userName.errors.required">User Name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+          <kendo-label class="k-form" text="Password"></kendo-label>
+          <input kendo-textbox class="form-control k-input-solid" type="password"
+            [ngClass]="{ 'ng-invalid ng-touched': (f.password.invalid && f.password.touched) && f.password.errors }"
+            [style.width.px]="200" [(ngModel)]="employeeDetails.password" formControlName="password">
+          <div *ngIf="f.password.errors && (f.password.invalid && f.password.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <kendo-label class="k-form" text="Gender"></kendo-label>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <kendo-label [for]="male" text="Male"></kendo-label>
+            <input type="radio" name="gender" value="Male" #male
+              [(ngModel)]="employeeDetails.gender" formControlName="gender"
+              [ngClass]="{ 'ng-invalid ng-touched': (f.gender.invalid && f.gender.touched) && f.gender.errors }"
+              kendoRadioButton />
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <kendo-label [for]="female" text="Female"></kendo-label>
+            <input type="radio" name="gender" value="Female" #female
+              [(ngModel)]="employeeDetails.gender" formControlName="gender"
+              [ngClass]="{ 'ng-invalid ng-touched': (f.gender.invalid && f.gender.touched) && f.gender.errors }"
+              kendoRadioButton />
+          </div>
+          <div *ngIf="f.password.errors && (f.password.invalid && f.password.touched)" class="k-tooltip-validation">
+            <div *ngIf="f.password.errors.required">Gender is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <div class="form-group col-lg-4 col-md-4 col-sm-4">
+            <kendo-label class="k-form" text="Qualification"></kendo-label>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <kendo-dropdownlist [data]="qualifications"
+            [style.width.px]="250"
+            [(value)]="employeeDetails.qualifications"
+            placeholder="Select Qualification">
+            </kendo-dropdownlist>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <div class="form-group col-lg-4 col-md-4 col-sm-4">
+            <kendo-label class="k-form" text="Experience"></kendo-label>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <kendo-dropdownlist [data]="experiences"
+            [style.width.px]="250"
+            [(value)]="employeeDetails.experience"
+            placeholder="Select Experience">
+            </kendo-dropdownlist>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <div class="form-group col-lg-4 col-md-4 col-sm-4">
+            <kendo-label class="k-form" text="Coading Languages"></kendo-label>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <kendo-multiselect
+              placeholder="Select Languages"
+              [checkboxes]="true" [style.width.px]="250"
+              [autoClose]="false"
+              [data]="coadingLanguages"
+              [(value)]="employeeDetails.coadingLanguages">
+            </kendo-multiselect>
+          </div>
+        </div>
+      </div>
+      <button kendoButton [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
+    </form>
+  </div>
+</div>
